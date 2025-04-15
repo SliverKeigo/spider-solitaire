@@ -1,0 +1,91 @@
+.card {
+  width: 100px;
+  height: 140px;
+  border-radius: 5px;
+  position: absolute;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  top: 0; /* 重置基本位置 */
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    margin-top 0.15s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none; /* 防止图片接收拖放事件 */
+}
+
+.card-selected {
+  transform: translateY(-10px);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  border: 2px solid gold;
+}
+
+.card-valid-target {
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.card-back {
+  background-color: #26418f;
+}
+
+.card-dragging {
+  opacity: 0.5;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  color: #555;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.column {
+  position: relative;
+  min-height: 140px;
+  width: 100px;
+  margin: 0 10px;
+  padding-bottom: 160px; /* 为堆叠的卡牌提供空间 */
+}
+
+.column-drop-target {
+  border: 2px dashed rgba(0, 200, 0, 0.5);
+  background-color: rgba(0, 200, 0, 0.1);
+}
+
+.column .card {
+  margin-top: var(--card-offset, 0px);
+}
+
+.column-empty {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  height: 140px;
+}
+
+/* 拖动时的预览样式 */
+.drag-preview {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.8;
+  transform-origin: top left;
+}
